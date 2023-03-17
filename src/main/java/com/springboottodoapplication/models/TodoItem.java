@@ -1,11 +1,13 @@
 package com.springboottodoapplication.models;
 
+import com.springboottodoapplication.config.DateConfig;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "todo_item")
@@ -28,19 +30,19 @@ public class TodoItem {
 
     @Getter
     @Setter
-    private Instant createdDate;
+    private String createdDate;
 
     @Getter
     @Setter
-    private Instant modifiedDate;
+    private String modifiedDate;
 
     public TodoItem(){};
 
     public TodoItem(String description){
         this.description = description;
         this.complete = false;
-        this.createdDate = Instant.now();
-        this.modifiedDate = Instant.now();
+        this.createdDate = DateConfig.getDate();
+        this.modifiedDate = DateConfig.getDate();
     }
 
     @Override

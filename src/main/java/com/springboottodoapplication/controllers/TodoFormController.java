@@ -1,5 +1,6 @@
 package com.springboottodoapplication.controllers;
 
+import com.springboottodoapplication.config.DateConfig;
 import com.springboottodoapplication.models.TodoItem;
 import com.springboottodoapplication.repositories.TodoItemRepository;
 import jakarta.validation.Valid;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Controller
 public class TodoFormController {
@@ -44,7 +47,7 @@ public class TodoFormController {
         if (result.hasErrors()){
             return "add-todo-item";
         }
-        todoItem.setCreatedDate(Instant.now());
+        todoItem.setCreatedDate(DateConfig.getDate());
         todoItemRepository.save(todoItem);
         return "redirect:/";
     }
