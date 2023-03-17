@@ -1,6 +1,7 @@
 package com.springboottodoapplication.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,7 @@ public class TodoItem {
 
     @Getter
     @Setter
+    @NotBlank(message = "Description is required")
     public String description;
 
     @Getter
