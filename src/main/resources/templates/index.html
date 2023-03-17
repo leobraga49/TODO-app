@@ -25,6 +25,12 @@
         </thead>
         <tbody>
         <tr th:each="item : ${todoItems}">
+            <td>
+                <div class="btn btn-group-sm" role="group">
+                    <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">Edit</a>
+                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Delete</a>
+                </div>
+            </td>
             <td th:text="${item.id}">item_id</td>
             <td th:text="${item.description}">item_description</td>
             <td th:text="${item.complete}">item_complete</td>
